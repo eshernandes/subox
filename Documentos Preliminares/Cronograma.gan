@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Projeto Extensao" company="" webLink="http://" view-date="2024-03-01" view-index="0" gantt-divider-location="386" resource-divider-location="300" version="3.3.3309" locale="pt_BR">
+    <description/>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="220" order="0"/>
+        <field id="tpd4" name="Data inicial" width="82" order="1"/>
+        <field id="tpd5" name="Data final" width="83" order="2"/>
+        <field id="tpd15" name="Notas" width="20" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nome" width="210" order="0"/>
+        <field id="1" name="Função" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" uid="06abe8df27354981bbb068705aab818c" name="Iniciação" meeting="false" start="2024-02-23" duration="151" complete="0" expand="false">
+            <task id="1" uid="9facfad01a064465a53ffcf89fc0cbba" name="Definição de Escopo" meeting="false" start="2024-02-23" duration="11" complete="0" expand="true"/>
+            <task id="2" uid="4a4a2e4325e04d9bb75e92d13765b6e6" name="Objetivos do Projeto" meeting="false" start="2024-02-23" duration="11" complete="0" expand="true"/>
+            <task id="3" uid="d74e1e0fcb3e4c5c941a2842f2649bf4" name="Identificação das Partes Interessadas" meeting="false" start="2024-03-01" duration="11" complete="0" expand="true"/>
+            <task id="4" uid="af63ad19ed78407eb92303f0a662e09d" name="Definição dos Requisitos de Recurso" meeting="false" start="2024-03-01" duration="20" complete="0" expand="true"/>
+            <task id="5" uid="21b729716583490ca185e527cb015b6c" name="Documentação do Projeto" meeting="false" start="2024-02-23" duration="151" complete="0" expand="true"/>
+        </task>
+        <task id="6" uid="30543bed9b384a719db010a2d9ff1408" name="Planejamento" meeting="false" start="2024-07-19" duration="46" complete="0" expand="false">
+            <task id="7" uid="3d13b69f5fdf413592384ac2fa5de5ac" name="Cronograma" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="11" uid="728054309c4c46c6aa3cd91587cac835" name="Orçamento" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="10" uid="400ef0cae4ba426ebf2d08a98f6e04a1" name="Planejamento de Comunicação" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="9" uid="6cc9c704d2e6497a87337eeb8c0ddadc" name="Planejamento de Recursos" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="8" uid="3ea8b0ebfc4245fd9507864a7113ca7c" name="Gestão de Riscos" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+        </task>
+        <task id="12" uid="8a56eb58fa42478bafa7b793e9d8709b" name="Desenvolvimento de Sistema" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="false">
+            <task id="13" uid="7ea74c37dfa6414bae648b8a39bc45b5" name="Arquitetura de Sistema" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="15" uid="1fd530a9f7254e10b4acb56ff6753829" name="Design da Interface de Usuário" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="14" uid="c6dd2efb7106441bb4eb7f35c2c78065" name="Programação" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+        </task>
+        <task id="16" uid="acc81d1dfa6043f083290b71599bd447" name="Aplicação de Teste" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="false">
+            <task id="17" uid="e5fcc42962fc4e2ebbb7f770716996f7" name="Teste de Usabilidade" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="19" uid="4ff19ce6bab94527b3df3e4b6fa5bea5" name="Teste de Aceitação pelo Usuário" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="18" uid="28fb60bee24d4b0cbcbd8e43a651d16c" name="Melhorias no Sistema" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+        </task>
+        <task id="20" uid="0780cc0f8db54245979740f428c9ec0d" name="Execução" meeting="false" start="2024-07-19" duration="46" complete="0" expand="false">
+            <task id="21" uid="493327f3be4f4613803fc94238f7226e" name="Lançamento do Sistema" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="23" uid="75065dc0ef70453d9b147ff91c91d37c" name="Monitoramento de Desempenho" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="22" uid="5ac088e95de243a980db303a1fa1bb6d" name="Gestão de Problemas" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+        </task>
+        <task id="24" uid="d844529c08474560b2078ee97d3a9893" name="Encerramento" meeting="false" start="2024-07-19" duration="46" complete="0" expand="false">
+            <task id="25" uid="e2d21788adde4f06b043c890a17f9650" name="Documento Final" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="26" uid="3ebf61c06b69440692175d5d7353f76d" name="Apresentação do Projeto" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+            <task id="27" uid="6ac52285a78b405a89e7619e38eabc8c" name="Avaliação do Projeto" color="#8cb6ce" meeting="false" start="2024-07-19" duration="46" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
