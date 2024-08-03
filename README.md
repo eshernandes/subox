@@ -4,7 +4,6 @@
 - Proposta de Projeto
 
 ### Documentos Preliminares/
-- Termo de Abertura
 - Dicionário EAP
 - Documentos de Requisitos Funcionais
 - Pitch de Apresentação
