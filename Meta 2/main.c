@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <locale.h>
+#include <unistd.h>
 
 typedef struct
 {
@@ -30,6 +31,38 @@ void pausarExecucao()
 {
     printf("\n\nPressione qualquer tecla para retornar...");
     _getch();
+}
+
+void imprimirNomeEmpresa()
+{
+    char nome[126];
+    FILE *arquivo = fopen("empresa.bin", "rb");
+
+    if (arquivo == NULL)
+    {
+        perror("Erro ao abrir arquivo para leitura.");
+        exit(1);
+    }
+
+    fread(nome, sizeof(char), 126, arquivo);
+    fclose(arquivo);
+
+    printf("%s", nome);
+}
+
+void salvarNomeEmpresa(char nome[])
+{
+    FILE *arquivo = fopen("empresa.bin", "wb");
+    if (arquivo == NULL)
+    {
+        perror("Erro ao abrir o arquivo");
+        exit(1);
+    }
+
+    size_t length = strlen(nome) + 1;
+    fwrite(nome, sizeof(char), length, arquivo);
+
+    fclose(arquivo);
 }
 
 void lerFeedbacks()
@@ -68,7 +101,7 @@ void lerFeedbacks()
     pausarExecucao();
 }
 
-void salvarFeedback(Feedback feedback)
+void salvarFeedbacks(Feedback feedbacks[], int quantidade)
 {
     FILE *arquivo = fopen("feedbacks.bin", "ab+");
     if (arquivo == NULL)
@@ -77,56 +110,130 @@ void salvarFeedback(Feedback feedback)
         exit(1);
     }
 
-    fwrite(&feedback, sizeof(Feedback), 1, arquivo);
+    for (int i = 0; i < quantidade; i++) {
+        fwrite(&feedbacks[i], sizeof(Feedback), 1, arquivo);
+    }
+
     fclose(arquivo);
 }
 
 void menuCadastroFeedback()
 {
-    setlocale(LC_ALL, "Portuguese");
+    Feedback feedbacks[100];
 
-    Feedback feedback;
-
-    char resposta;
-    printf("Deseja se identificar? (s/n) ");
-    do
+    int i = 0;
+    while (1)
     {
-        scanf(" %c", &resposta);
-        resposta = tolower(resposta);
+        Feedback feedback;
 
-        if (resposta != 's' && resposta != 'n')
+        char resposta;
+        char continuar;
+
+        printf("[1]. Deseja se identificar? (s/n) ");
+        do
         {
-            printf("Entrada inválida. Deseje uma das opções acima: ");
+            scanf(" %c", &resposta);
+            resposta = tolower(resposta);
+
+            if (resposta != 's' && resposta != 'n')
+            {
+                printf("Entrada inválida. Deseje uma das opções acima: ");
+            }
+
+        } while (resposta != 's' && resposta != 'n');
+
+        if (resposta == 'n')
+            strcpy(feedback.autor, "Anonimo");
+        else
+        {
+            printf("Digite seu nome: ");
+            fflush(stdin);
+            gets(feedback.autor);
         }
 
-    } while (resposta != 's' && resposta != 'n');
+        printf("[2]. Conte-nos pontos a serem melhorados ou pontos positivos de na empresa \'");
+        imprimirNomeEmpresa();
+        printf("\': ");
 
-    if (resposta == 'n')
-        strcpy(feedback.autor, "Anonimo");
-    else
-    {
-        printf("Digite seu nome: ");
         fflush(stdin);
-        gets(feedback.autor);
+        gets(feedback.mensagem);
+
+        printf("[3]. De 0 a 10, o quanto você recomendaria nossa empresa? ");
+        do
+        {
+            scanf("%d", &feedback.avaliacao);
+
+            if (feedback.avaliacao < 0 || feedback.avaliacao > 10)
+            {
+                printf("Entrada inválida. Digite uma avaliação de 0 a 10: ");
+            }
+
+        } while (feedback.avaliacao < 0 || feedback.avaliacao > 10);
+
+        limparConsole();
+
+        printf("\t\tNós da empresa \'");
+        imprimirNomeEmpresa();
+        printf("\' agradecemos sua opinião!");
+        sleep(5);
+        limparConsole();
+
+
+
+        printf("Deseja continuar no modo cliente (s/n)? ");
+        do
+        {
+            scanf(" %c", &continuar);
+            continuar = tolower(continuar);
+
+            if (continuar != 's' && continuar != 'n')
+            {
+                printf("Entrada inválida. Deseje uma das opções acima: ");
+            }
+        } while (continuar != 's' && continuar != 'n');
+
+
+        feedbacks[i] = feedback;
+
+        if (continuar == 'n') break;
+        i++;
     }
 
-    printf("Conte-nos pontos a serem melhorados ou pontos positivos de nossa empresa: ");
-    fflush(stdin);
-    gets(feedback.mensagem);
+    salvarFeedbacks(feedbacks, i+1);
+}
 
-    printf("De 0 a 10, o quanto você recomendaria nossa empresa? ");
-    do
+void menuNomeEmpresa()
+{
+    FILE *arquivoEmpresa = fopen("empresa.bin", "rb");
+    if (arquivoEmpresa == NULL)
     {
-        scanf("%d", &feedback.avaliacao);
+        char nome[126];
 
-        if (feedback.avaliacao < 0 || feedback.avaliacao > 10)
-        {
-            printf("Entrada inválida. Digite uma avaliação de 0 a 10: ");
-        }
+        imprimirCabecalho();
+        printf("Bem vindo ao nosso sistema! Para começar digite o nome de sua empresa: ");
+        fflush(stdin);
+        gets(nome);
 
-    } while (feedback.avaliacao < 0 || feedback.avaliacao > 10);
+        salvarNomeEmpresa(nome);
+    }
+}
 
-    salvarFeedback(feedback);
+void menuAlterarNomeEmpresa()
+{
+    char nome[126];
+
+    FILE *arquivoEmpresa = fopen("empresa.bin", "rb");
+    if (arquivoEmpresa == NULL)
+    {
+        perror("Erro ao abrir arquivo para leitura");
+        exit(1);
+    }
+
+    printf("Skidibi: ");
+    fflush(stdin);
+    gets(nome);
+
+    salvarNomeEmpresa(nome);
 }
 
 void menuLoja()
@@ -136,10 +243,9 @@ void menuLoja()
     int navegacao;
 
     printf("[1] Visualizar Feedbacks\n");
-    printf("[2] Cadastrar Perguntas de Feedback\n");
-    printf("[3] Modo Cliente\n");
-    printf("[4] Configurações\n");
-    printf("[5] Sair do Programa\n");
+    printf("[2] Modo Cliente\n");
+    printf("[3] Alterar nome da empresa\n");
+    printf("[4] Sair do Programa\n");
 
     scanf("%i", &navegacao);
 
@@ -156,11 +262,15 @@ void menuLoja()
         lerFeedbacks();
         break;
 
-    case 3:
+    case 2:
         menuCadastroFeedback();
         break;
 
-    case 5:
+    case 3:
+        menuAlterarNomeEmpresa();
+        break;
+
+    case 4:
         printf("Desligando o programa.");
         exit(0);
         break;
@@ -170,43 +280,17 @@ void menuLoja()
     }
 }
 
-void salvarNomeEmpresa(char nome[])
-{
-    FILE *arquivo = fopen("empresa.bin", "wb");
-    if (arquivo == NULL)
-    {
-        perror("Erro ao abrir o arquivo");
-        exit(1);
-    }
-
-    size_t length = strlen(nome) + 1;
-    fwrite(nome, sizeof(char), length, arquivo);
-
-    fclose(arquivo);
-}
-
 int main()
 {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "Portuguese");
 
-    FILE *arquivoEmpresa = fopen("empresa.bin", "rb");
-    if (arquivoEmpresa == NULL)
-    {
-        char nome[126];
-        printf("Bem vindo ao nosso sistema! Para começar digite o nome de sua empresa: ");
-        fflush(stdin);
-        gets(nome);
-
-        salvarNomeEmpresa(nome);
-    }
+    menuNomeEmpresa();
 
     while (1)
     {
         limparConsole();
         menuLoja();
     }
-
-    printf("Congratulações.");
 
     return 0;
 }
