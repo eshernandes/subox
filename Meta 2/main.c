@@ -110,7 +110,8 @@ void salvarFeedbacks(Feedback feedbacks[], int quantidade)
         exit(1);
     }
 
-    for (int i = 0; i < quantidade; i++) {
+    for (int i = 0; i < quantidade; i++)
+    {
         fwrite(&feedbacks[i], sizeof(Feedback), 1, arquivo);
     }
 
@@ -178,8 +179,6 @@ void menuCadastroFeedback()
         sleep(5);
         limparConsole();
 
-
-
         printf("Deseja continuar no modo cliente (s/n)? ");
         do
         {
@@ -192,14 +191,14 @@ void menuCadastroFeedback()
             }
         } while (continuar != 's' && continuar != 'n');
 
-
         feedbacks[i] = feedback;
 
-        if (continuar == 'n') break;
+        if (continuar == 'n')
+            break;
         i++;
     }
 
-    salvarFeedbacks(feedbacks, i+1);
+    salvarFeedbacks(feedbacks, i + 1);
 }
 
 void menuNomeEmpresa()
