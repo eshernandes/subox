@@ -228,7 +228,7 @@ void menuAlterarNomeEmpresa()
         exit(1);
     }
 
-    printf("Skidibi: ");
+    printf("Digite o novo nome para alteração: ");
     fflush(stdin);
     gets(nome);
 
