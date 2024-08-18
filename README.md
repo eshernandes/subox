@@ -1,15 +1,9 @@
 ## DOCUMENTOS QUE FALTAM PARA ENVIAR
 
-### Raiz (./)
-- Proposta de Projeto
-
 ### Documentos Preliminares/
-- Dicionário EAP
+- Proposta de Projeto
 - Documentos de Requisitos Funcionais
 - Pitch de Apresentação
 
 ### Meta 1/
 - Fluxograma
-
-### Meta 2/
-- Projeto em C
