@@ -2,7 +2,6 @@
 
 ### Documentos Preliminares/
 - Proposta de Projeto
-- Documentos de Requisitos Funcionais
 - Pitch de Apresentação
 
 ### Meta 1/
