@@ -2,4 +2,3 @@
 
 ### Documentos Preliminares/
 - Proposta de Projeto
-- Pitch de Apresentação
