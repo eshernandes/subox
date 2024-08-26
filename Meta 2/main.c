@@ -71,7 +71,7 @@ void lerFeedbacks()
     FILE *arquivo = fopen("feedbacks.bin", "rb");
     if (arquivo == NULL)
     {
-        printf("\t\tVocê nao possui feedbacks cadastrados no sistema.");
+        printf("\t\tVoce nao possui feedbacks cadastrados no sistema.");
 
         pausarExecucao();
         return;
@@ -159,7 +159,7 @@ void menuCadastroFeedback()
         fflush(stdin);
         gets(feedback.mensagem);
 
-        printf("[3]. De 0 a 10, o quanto você recomendaria nossa empresa? ");
+        printf("[3]. De 0 a 10, o quanto voce recomendaria nossa empresa? ");
         do
         {
             scanf("%d", &feedback.avaliacao);
@@ -187,7 +187,7 @@ void menuCadastroFeedback()
 
             if (continuar != 's' && continuar != 'n')
             {
-                printf("Entrada invalida. Deseje uma das opções acima: ");
+                printf("Entrada invalida. Deseje uma das opcoes acima: ");
             }
         } while (continuar != 's' && continuar != 'n');
 
