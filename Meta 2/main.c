@@ -71,7 +71,7 @@ void lerFeedbacks()
     FILE *arquivo = fopen("feedbacks.bin", "rb");
     if (arquivo == NULL)
     {
-        printf("\t\tVocê não possui feedbacks cadastrados no sistema.");
+        printf("\t\tVocê nao possui feedbacks cadastrados no sistema.");
 
         pausarExecucao();
         return;
@@ -80,7 +80,7 @@ void lerFeedbacks()
     Feedback feedback;
     size_t resultado;
 
-    printf("%-20s %-60s %-10s\n", "Autor", "Mensagem", "Avaliação");
+    printf("%-20s %-60s %-10s\n", "Autor", "Mensagem", "Avaliacao");
     printf("%-20s %-60s %-10s\n", "--------------------", "------------------------------------------------------------", "----------");
 
     int i = 0;
@@ -138,7 +138,7 @@ void menuCadastroFeedback()
 
             if (resposta != 's' && resposta != 'n')
             {
-                printf("Entrada inválida. Deseje uma das opções acima: ");
+                printf("Entrada invalida. Deseje uma das opções acima: ");
             }
 
         } while (resposta != 's' && resposta != 'n');
@@ -166,16 +166,16 @@ void menuCadastroFeedback()
 
             if (feedback.avaliacao < 0 || feedback.avaliacao > 10)
             {
-                printf("Entrada inválida. Digite uma avaliação de 0 a 10: ");
+                printf("Entrada invalida. Digite uma avaliacao de 0 a 10: ");
             }
 
         } while (feedback.avaliacao < 0 || feedback.avaliacao > 10);
 
         limparConsole();
 
-        printf("\t\tNós da empresa \'");
+        printf("\t\tNos da empresa \'");
         imprimirNomeEmpresa();
-        printf("\' agradecemos sua opinião!");
+        printf("\' agradecemos sua opiniao!");
         sleep(5);
         limparConsole();
 
@@ -187,7 +187,7 @@ void menuCadastroFeedback()
 
             if (continuar != 's' && continuar != 'n')
             {
-                printf("Entrada inválida. Deseje uma das opções acima: ");
+                printf("Entrada invalida. Deseje uma das opções acima: ");
             }
         } while (continuar != 's' && continuar != 'n');
 
@@ -228,7 +228,7 @@ void menuAlterarNomeEmpresa()
         exit(1);
     }
 
-    printf("Digite o novo nome para alteração: ");
+    printf("Digite o novo nome para alteracao: ");
     fflush(stdin);
     gets(nome);
 
@@ -281,7 +281,8 @@ void menuLoja()
 
 int main()
 {
-    setlocale(LC_ALL, "Portuguese");
+    setlocale(LC_ALL, "");
+    system("chcp 1252 > nul");
 
     menuNomeEmpresa();
 
