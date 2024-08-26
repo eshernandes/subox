@@ -3,6 +3,3 @@
 ### Documentos Preliminares/
 - Proposta de Projeto
 - Pitch de Apresentação
-
-### Meta 1/
-- Fluxograma
